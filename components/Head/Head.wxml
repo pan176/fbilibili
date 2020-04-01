@@ -1,0 +1,16 @@
+<view class="head">
+  <!-- logo -->
+  <view class="logo">
+    <image style="width:140rpx;height:60rpx;" src="../../icons/logo.png" />
+  </view>
+  <!-- 搜索 -->
+  <view class="search_icon">
+    <image style="width:50rpx;height:52rpx;" src="../../icons/search.png" />
+  </view>
+  <!-- 头像 -->
+  <view class="user_icon">
+    <image style="width:54rpx;height:60rpx;" src="../../icons/user.png" />
+  </view>
+  <!-- 下载 APP -->
+  <view class="down_app">下载 APP</view>
+</view>

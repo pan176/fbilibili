@@ -1,0 +1,82 @@
+<view class="main">
+  <!-- 公共头部 -->
+  <Head></Head>
+  <!-- 视频详情 -->
+  <view class="video_info">
+    <!-- 视频 -->
+    <video src="{{videoInfo.url}}" />
+  </view>
+  <!-- 选项卡 -->
+  <view class="topTabSwiper">
+    <view class="tab {{currentIndex == 0 ? 'active' : ''}}" data-index="0" bindtap="activeTab">
+      简介
+    </view>
+    <view class="tab {{currentIndex == 1 ? 'active' : ''}}" data-index="1" bindtap="activeTab">
+      评论 {{commentData.commentTotalCount}}
+    </view>
+    <view class="dan" style="width:100rpx;height:50rpx;">弹</view>
+  </view>
+  <!-- 显示内容 -->
+  <swiper current="{{currentIndex}}" class='content' style="height:600px;" bindchange="getCurrentIndex">
+    <swiper-item>
+      <!-- 视频标题 -->
+      <view class="video_title_wrap">
+        <text class="video_title">{{videoInfo.describe}}</text>
+        <text class="fa fa-angle-down"></text>
+      </view>
+      <!-- 参数 -->
+      <view class="video_param">
+        <!-- 作者 -->
+        <text class="author">{{videoInfo.author}}</text>
+        <!-- 播放量 -->
+        <text class="play_count">{{videoInfo.playCount}}次观看</text>
+        <!-- 弹幕 -->
+        <text class="danmu">{{videoInfo.commentCount}}弹幕</text>
+        <!-- 日期 -->
+        <text class="date">{{videoInfo.date}}</text>
+      </view>
+      <!-- 推荐视频 -->
+      <view class="other_list">
+        <navigator wx:for="{{othersList}}" wx:key="{{item}}" class="other_item">
+          <!-- 图片容器 -->
+          <view class="other_img_wrap">
+            <image src="{{item.imgSrc}}" mode="widthFix" />
+          </view>
+          <!-- 视频详情 -->
+          <view class="other_info">
+            <!-- 视频标题 -->
+            <view class="other_title">{{item.title}}</view>
+            <!-- 视频参数 -->
+            <view class="other_param">
+              <!-- 播放量 -->
+              <text class="play_count">{{item.playMsg}}万次观看</text>
+              <!-- 弹幕量 -->
+              <text class="play_count">{{item.commentCount}}弹幕</text>
+            </view>
+          </view>
+        </navigator>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <!-- 评论 -->
+      <view class="comment_wrap">
+        <view class="comment_list">
+          <view class="comment_item" wx:for="{{commentData.commentList}}" wx:key="{{item}}">
+            <!-- 左侧 -->
+            <view class="comment_user">
+              <image src="{{item.userIconSrc}}" mode="widthFix" />
+            </view>
+            <!-- 右侧 -->
+            <view class="comment_info">
+              <view class="comment_detail">
+                <text class="author">{{item.username}}</text>
+                <text class="date">{{item.commentDate}}</text>
+              </view>
+              <view class="comment_content">{{item.commentInfo}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>
